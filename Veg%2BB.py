@@ -8,7 +8,7 @@ from openpyxl.styles import numbers, PatternFill
 fileXLSX = openpyxl.load_workbook("<Pfad XLSX>")
 sheet = fileXLSX["<Sheetname>"]
 #Werte in Tabelle: F4-IN145
-for col in sheet["F4":"IN145"]:
+for col in sheet["F4":"IN244"]:
     for row in col:
 #        print(f"{row.value} - {row.coordinate} - {type(row.value)}")
         coord = openpyxl.utils.cell.coordinate_to_tuple(row.coordinate)
