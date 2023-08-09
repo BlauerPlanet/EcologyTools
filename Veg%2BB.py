@@ -1,14 +1,22 @@
 # genau auf das sheet von 2023 mit den Arten von Stand 27.07.2023 angepasst
-# Bei hinzufügen von Arten müssen die col_lett für die Moose geändert werden
 import openpyxl
 from openpyxl.styles import numbers, PatternFill
 
-# <".."> Hier müssen Sachen eingetragen werden
+print("Voraussetzung: Arbeitsverzeichnis ist in der IDE geöffnet")
+xlsxDIR = str(input("Pfad der XLSX eingeben [Format: Dateiname.xlsx] "))
+xlsxSHEET = str(input("Name des Tabellensheets eingeben "))
+xlsxSAVE = str(input("Speicherpfad der XLSX eingeben [Format: Dateiname.xlsx] "))
 
-fileXLSX = openpyxl.load_workbook("<Pfad XLSX>")
-sheet = fileXLSX["<Sheetname>"]
-#Werte in Tabelle: F4-IN145
-for col in sheet["F4":"IN244"]:
+FirstCell = str(input("Name der ersten Zelle mit Daten eingeben (z.B. F4) "))
+LastCell = str(input("Name der letzten Zelle mit Daten eingeben (z.B. IP244) "))
+
+Moss = input("\n Bitte alle Spaltennamen der Moose angeben (Format: AR, AS, ...) ")
+MossList = Moss.split(",")
+print(MossList)
+
+fileXLSX = openpyxl.load_workbook(xlsxDIR)
+sheet = fileXLSX[xlsxSHEET]
+for col in sheet[FirstCell : LastCell]:
     for row in col:
 #        print(f"{row.value} - {row.coordinate} - {type(row.value)}")
         coord = openpyxl.utils.cell.coordinate_to_tuple(row.coordinate)
@@ -35,7 +43,7 @@ for col in sheet["F4":"IN244"]:
             sheet.cell(coord[0], coord[1]).value = "R"
             # + und 1 sind manuell zu behandeln, da keine Unterscheidung mit python mgl.
         elif int(row.value) > 1 and int(row.value) < 5:
-            if col_lett == "AR" or col_lett =="AS" or col_lett =="AT" or col_lett =="CT" or col_lett =="CU" or col_lett =="CV" or col_lett =="EP" or col_lett =="EQ" or col_lett =="ER" or col_lett =="GP" or col_lett =="GQ" or col_lett =="GR" or col_lett =="IN" or col_lett =="IO" or col_lett =="IP    ":
+            if col_lett in Moss:
                sheet.cell(coord[0], coord[1]).value = "2m"
                 #sheet.cell(coord[0], coord[1]).fill = PatternFill(start_color='AAAA9999', end_color='AAAA9999', fill_type='solid')
             else: 
@@ -53,5 +61,5 @@ for col in sheet["F4":"IN244"]:
         elif int(row.value) >= 75 and int(row.value) < 100:
                 sheet.cell(coord[0], coord[1]).value = 5      
 #        print(col.coordinate)
-fileXLSX.save("<Speichername für Datei>")
+fileXLSX.save(xlsxSAVE)
 print("Saved")
