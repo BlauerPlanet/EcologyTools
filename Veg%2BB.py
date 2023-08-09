@@ -12,7 +12,7 @@ LastCell = str(input("Name der letzten Zelle mit Daten eingeben (z.B. IP244) "))
 
 Moss = input("\n Bitte alle Spaltennamen der Moose angeben (Format: AR, AS, ...) ")
 MossList = Moss.split(",")
-print(MossList)
+#print(MossList)
 
 fileXLSX = openpyxl.load_workbook(xlsxDIR)
 sheet = fileXLSX[xlsxSHEET]
