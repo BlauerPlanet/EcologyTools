@@ -17,7 +17,7 @@ import numpy as np
 from datetime import datetime
 from os import listdir, path
 
-def style(df_draw,titlename, decision):
+def style(df_draw,titlename):
     
     boundary_lines = [(280.0, "UV-C"),(315.0, "UV-B"),(390.0, "UV-A"),(770.0, "VIS (violet -> red)")] # list of tuples with value and name of boundary
     min_y_value = df_draw["absorption"].min()
@@ -70,7 +70,7 @@ def style(df_draw,titlename, decision):
         font=dict(size=12),
         xanchor="right"
     )
-    fig.update_layout(margin=dict(l=190))
+    fig.update_layout(margin=dict(l=200))
     fig.show()
 # root = tk.Tk()
 # root.withdraw()  # Hide main window
@@ -115,7 +115,7 @@ def plot_all_seperate(data2draw):
         choice= ""
     print(df)
     titlename="Comparison between all measurements"
-    style(df_draw,titlename,decision)
+    style(df_draw,titlename)
     if choice == "Y":
         plot_mean_comp(data2draw)
 
