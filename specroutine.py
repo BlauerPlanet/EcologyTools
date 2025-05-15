@@ -13,6 +13,10 @@ import numpy as np
 from datetime import datetime
 from os import listdir, path
 
+#when working with Spyder IDE, please run the following two lines to show the interactive figures in your browser:
+#import plotly.io as pio
+#pio.renderers.default='browser'
+
 def style(df_draw,titlename):
     
     boundary_lines = [(280.0, "UV-C"),(315.0, "UV-B"),(390.0, "UV-A"),(770.0, "VIS (violet -> red)")] # list of tuples with value and name of boundary
@@ -84,12 +88,10 @@ def getClipboard():
     cb.insert(0, "description", descr)
     return cb
 
-def data_append(data, clipboardContent):
-
-    data0 = pd.concat([data,clipboardContent])
-    cc = clipboardContent
+def data_append(data_loaded, clipboard_input):
+    data0 = pd.concat([data_loaded,clipboard_input])
     stat = 1
-    return data0, stat, cc
+    return data0, stat, clipboard_input
 
 def plot_all_seperate(data2draw):
     all_rows = []
