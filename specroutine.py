@@ -3,10 +3,6 @@
 # Step 2: append clipboard content to another dataframe, check wether clipboard content is the same #important not to measure the same sample twice --> could be that same values and therefore not appended to dataframe
 # Step 3: interesting Graphics with plotly(+ seaborn, matplotlib, ...?)
 
-# To-Do: 
-# - create a tkinter gui interface for selecting stuff from the dataset to draw
-# - max will das script gerne haben xD --> hab mal so den Hiwi angesprochen als ITler
-
 # coded with assist of ChatGPT for getting along with errors and some of the code logic needed (instad of looking in the docs)
 
 import plotly.express as px
