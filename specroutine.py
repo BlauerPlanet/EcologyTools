@@ -3,7 +3,7 @@
 # Step 2: append clipboard content to another dataframe, check wether clipboard content is the same #important not to measure the same sample twice --> could be that same values and therefore not appended to dataframe
 # Step 3: interesting Graphics with plotly(+ seaborn, matplotlib, ...?)
 
-# coded with assist of ChatGPT for getting along with errors and some of the code logic needed (instad of looking in the docs)
+# coded with assist of ChatGPT for getting along with errors and some of the code logic needed (instead of looking in the docs)
 
 import plotly.express as px
 from plotly.subplots import make_subplots
